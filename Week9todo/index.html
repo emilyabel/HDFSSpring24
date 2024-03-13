@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class Week To-Do List</title>
+  <link rel="stylesheet" href="https://use.typekit.net/zxb4ups.css">
+  <style>
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    * {
+      font-family: "europa", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+    h1 {
+      font-size: 3em;
+    }
+    li {
+      font-size: 1.5em;
+    }
+    input {
+      height: 25px;
+      width: 25px;
+    }
+  </style>
+</head>
+<body>
+
+  
+  <h1>Week 9 To-Do List</h1>
+  <ul id="todo-list">
+      <li><input type="checkbox"> Watch <a href="https://canvas.okstate.edu/courses/172921/modules/items/5564089" target="_PARENT"> Overview Video for Toy Review Mini Project </a></li>
+      <li><input type="checkbox"> Review <a href="https://canvas.okstate.edu/courses/172921/files/19326054?module_item_id=5543371" target="_PARENT">Instructions Document for Toy Review Project </a></li>
+      <li><input type="checkbox"> Review <a href="https://canvas.okstate.edu/courses/172921/files/19326049?module_item_id=5543369" target="_PARENT"> Rubric for Toy Review Project </a></li>
+      <li><input type="checkbox"> Review <a href="https://canvas.okstate.edu/courses/172921/files/19412550?module_item_id=5555593" target="_PARENT"> FAQ for Toy Review Project </a></li>
+      <li><input type="checkbox"> Review additional project resources </li>
+      <li><input type="checkbox"> Complete Toy Review Project, including all background research by Monday, March 25 at 11:59 PM </li>
+      <li><input type="checkbox"> Submit the Toy Review Video <a href="https://canvas.okstate.edu/courses/172921/assignments/2052021?module_item_id=5543374" target="_PARENT"> Here </a></li>
+      <li><input type="checkbox"> Submit the Toy Review Paper <a href="https://canvas.okstate.edu/courses/172921/assignments/2052022?module_item_id=5543375" target="_PARENT"> Here </a></li>
+      <li><input type="checkbox"> OPTIONAL: Take <a href="https://canvas.okstate.edu/courses/172921/quizzes/410541" target="_PARENT"> Week 9 | Infancy and Toddlerhood Make-up Quiz in Canvas </a></li>
+      <li><input type="checkbox"> Extra Credit: Complete <a href="https://canvas.okstate.edu/courses/172921/quizzes/422665" target="_PARENT"> Mid-term course evaluation survey by Monday, March 25th </a></li>
+ 
+  </ul>
+
+  <script>
+    const todoList = document.getElementById('todo-list');
+
+    // Load checked items from local storage
+    function loadCheckedItems() {
+      for (let i = 0; i < todoList.children.length; i++) {
+        const item = todoList.children[i];
+        const checkbox = item.querySelector('input[type="checkbox"]');
+        const isChecked = localStorage.getItem(`item${i}`) === 'true';
+
+        checkbox.checked = isChecked;
+      }
+    }
+
+    // Save checked items to local storage
+    function saveCheckedItems() {
+      for (let i = 0; i < todoList.children.length; i++) {
+        const item = todoList.children[i];
+        const checkbox = item.querySelector('input[type="checkbox"]');
+        localStorage.setItem(`item${i}`, checkbox.checked);
+      }
+    }
+
+    // Attach event listeners
+    todoList.addEventListener('change', saveCheckedItems);
+
+    // Load checked items when the page loads
+    window.addEventListener('load', loadCheckedItems);
+  </script>
+</body>
+</html>
